@@ -1,0 +1,6 @@
+{
+  "appId": "com.simuesp.studio.promax",
+  "appName": "SimuESP Studio PRO MAX",
+  "webDir": "www",
+  "server": { "androidScheme": "https" }
+}

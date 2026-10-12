@@ -1,0 +1,35 @@
+{
+  "name": "simuesp-studio-pro-max",
+  "version": "1.0.0",
+  "description": "SimuESP Studio PRO MAX - simulador electrónico multiplataforma",
+  "main": "desktop/main.cjs",
+  "author": "Leon Mena Ángel",
+  "license": "UNLICENSED",
+  "scripts": {
+    "start": "electron .",
+    "desktop:pack": "electron-builder --dir",
+    "desktop:dist": "electron-builder --win --publish never",
+    "web:prepare": "node scripts/prepare-web.cjs",
+    "android:init": "node scripts/prepare-web.cjs && cap add android",
+    "android:icons": "capacitor-assets generate --android",
+    "android:sync": "node scripts/prepare-web.cjs && cap sync android"
+  },
+  "dependencies": {
+    "@capacitor/android": "^7.4.3",
+    "@capacitor/core": "^7.4.3"
+  },
+  "devDependencies": {
+    "@capacitor/assets": "^3.0.5",
+    "@capacitor/cli": "^7.4.3",
+    "electron": "^37.2.6",
+    "electron-builder": "^26.0.12"
+  },
+  "build": {
+    "appId": "com.simuesp.studio.promax",
+    "productName": "SimuESP Studio PRO MAX",
+    "directories": { "output": "release", "buildResources": "build" },
+    "files": ["index.html", "desktop/**/*", "package.json"],
+    "win": { "target": ["nsis", "portable"], "icon": "build/icon.ico" },
+    "nsis": { "oneClick": false, "allowToChangeInstallationDirectory": true }
+  }
+}
